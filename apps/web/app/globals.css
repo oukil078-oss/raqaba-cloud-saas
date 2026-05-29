@@ -2,17 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light; }
-* { box-sizing: border-box; }
-html { direction: rtl; scroll-behavior: smooth; }
-body { margin: 0; background: #f7fbff; color: #071427; }
-::selection { background: #1389f2; color: white; }
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-.glass { background: rgba(255,255,255,.72); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.55); }
-.marketing-gradient { background: radial-gradient(circle at 18% 12%, rgba(19,137,242,.35), transparent 30%), radial-gradient(circle at 80% 10%, rgba(6,182,212,.25), transparent 26%), linear-gradient(135deg, #06162c 0%, #082747 52%, #0b3b70 100%); }
-.device-shine:before { content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; background:linear-gradient(135deg, rgba(255,255,255,.7), rgba(19,137,242,.15), rgba(255,255,255,.08)); -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
-@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-.float { animation: float 6s ease-in-out infinite; }
-input, select, textarea { font: inherit; }
-.ltr { direction: ltr; }
+body {
+  background: white;
+  color: black;
+}
