@@ -1,0 +1,2 @@
+import { Button } from '@/components/ui/Button';
+export function PageHeader({title, description, actionLabel, onAction}:{title:string; description?:string; actionLabel?:string; onAction?:()=>void}){return <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><h1 className="text-3xl font-black tracking-tight md:text-4xl">{title}</h1>{description&&<p className="mt-2 max-w-2xl text-slate-500">{description}</p>}</div>{actionLabel&&<Button onClick={onAction}>{actionLabel}</Button>}</div>}

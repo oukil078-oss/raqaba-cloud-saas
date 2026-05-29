@@ -1,0 +1,3 @@
+import { MarketingNavbar } from './Navbar';
+import { Footer } from './Footer';
+export function SimplePage({ eyebrow, title, description, children }: { eyebrow: string; title: string; description: string; children: React.ReactNode }) { return <><div className="marketing-gradient relative overflow-hidden pb-20 pt-32 text-white"><MarketingNavbar/><div className="mx-auto max-w-5xl px-5 text-center"><p className="font-black text-cyan-200">{eyebrow}</p><h1 className="mt-4 text-5xl font-black leading-tight md:text-7xl">{title}</h1><p className="mx-auto mt-6 max-w-3xl text-xl leading-9 text-blue-100">{description}</p></div></div><main className="px-5 py-20"><div className="mx-auto max-w-7xl">{children}</div></main><Footer/></>; }

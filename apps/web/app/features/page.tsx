@@ -1,0 +1,5 @@
+import { Barcode, Boxes, ChartSpline, FileText, ShieldCheck, UsersRound } from 'lucide-react';
+import { SimplePage } from '@/components/marketing/SimplePage';
+import { Card } from '@/components/ui/Card';
+const items = [['إدارة المنتجات',Boxes,'صور، SKU، باركود، أسعار، تكلفة وحدود مخزون.'],['المبيعات والفواتير',FileText,'إنشاء طلبات، خصومات، طرق دفع ووصل قابل للطباعة.'],['المشتريات',Boxes,'طلبات موردين واستلام مخزون تلقائي.'],['الزبائن والموردون',UsersRound,'ملفات كاملة وسجل تعاملات.'],['التقارير',ChartSpline,'مبيعات، أرباح تقديرية، أفضل منتجات وتصنيفات.'],['الأمان والصلاحيات',ShieldCheck,'أدوار مستخدمين وسجل نشاط.'],['بحث باركود',Barcode,'بيع وإيجاد المنتجات بسرعة داخل المحل.']];
+export default function Page(){return <SimplePage eyebrow="مزايا رقابة" title="منصة تشغيل كاملة للمتجر" description="كل وحدة مبنية حول سير عمل حقيقي للمتاجر اليومية."><div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{items.map(([t,Icon,d]: any)=><Card key={t}><Icon className="mb-5 text-raqaba-600" size={34}/><h3 className="text-2xl font-black">{t}</h3><p className="mt-3 leading-7 text-slate-600">{d}</p></Card>)}</div></SimplePage>}

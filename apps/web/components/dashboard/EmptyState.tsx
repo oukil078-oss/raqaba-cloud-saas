@@ -1,0 +1,2 @@
+import { Inbox } from 'lucide-react';
+export function EmptyState({title='لا توجد بيانات', description='ابدأ بإضافة أول سجل.'}:{title?:string; description?:string}){return <div className="rounded-[2rem] border border-dashed border-slate-300 bg-white p-12 text-center"><Inbox className="mx-auto mb-4 text-slate-400" size={42}/><h3 className="text-xl font-black">{title}</h3><p className="mt-2 text-slate-500">{description}</p></div>}

@@ -1,0 +1,2 @@
+import { SimplePage } from '@/components/marketing/SimplePage';
+export default function Page(){return <SimplePage eyebrow="قانوني" title="شروط الاستخدام" description="باستخدام رقابة كلاود توافق على استعمال المنصة لإدارة نشاط تجاري قانوني."><article className="prose prose-slate mx-auto max-w-3xl text-right leading-8"><p>الخدمة تُقدم كمنصة SaaS لإدارة المخزون والمبيعات. صاحب الحساب مسؤول عن صحة البيانات المدخلة وإدارة صلاحيات فريقه.</p><p>لا يجوز مشاركة كلمات المرور أو استخدام الخدمة بما يخالف القوانين المحلية.</p></article></SimplePage>}

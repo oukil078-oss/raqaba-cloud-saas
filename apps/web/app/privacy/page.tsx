@@ -1,0 +1,2 @@
+import { SimplePage } from '@/components/marketing/SimplePage';
+export default function Page(){return <SimplePage eyebrow="قانوني" title="سياسة الخصوصية" description="نحترم بيانات متجرك ولا نستخدمها إلا لتشغيل الخدمة وتحسينها."><article className="prose prose-slate mx-auto max-w-3xl text-right leading-8"><p>تُحفظ بيانات الحساب، المنتجات، المبيعات والتقارير في قاعدة بيانات آمنة. يجب إعداد متغيرات البيئة وأسرار الإنتاج لدى مزود الاستضافة وعدم مشاركتها.</p><p>يمكن لصاحب الحساب طلب تصدير أو حذف بياناته وفق المتطلبات التعاقدية.</p></article></SimplePage>}

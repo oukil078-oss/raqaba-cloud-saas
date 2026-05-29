@@ -1,0 +1,4 @@
+'use client';
+import { CrudPage } from '@/components/dashboard/CrudPage';
+import { formatDzd, formatDate } from '@/lib/utils';
+export default function Page(){return <CrudPage title="المصاريف" description="تسجيل تكاليف التشغيل لحساب ربح تقديري أدق." endpoint="/expenses" fields={[{name:'title',label:'العنوان',required:true},{name:'category',label:'التصنيف',type:'select',options:[['RENT','إيجار'],['SALARY','رواتب'],['UTILITIES','خدمات'],['MARKETING','تسويق'],['TRANSPORT','نقل'],['PACKAGING','تغليف'],['OTHER','أخرى']]},{name:'amount',label:'المبلغ',type:'number',required:true},{name:'paidAt',label:'تاريخ الدفع',type:'date'},{name:'note',label:'ملاحظة',type:'textarea'}]} columns={[{key:'title',label:'العنوان'},{key:'category',label:'التصنيف'},{key:'amount',label:'المبلغ',render:r=>formatDzd(r.amount)},{key:'paidAt',label:'التاريخ',render:r=>formatDate(r.paidAt)}]}/>}

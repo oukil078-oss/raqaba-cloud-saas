@@ -1,0 +1,3 @@
+'use client';
+import { CrudPage } from '@/components/dashboard/CrudPage';
+export default function Page(){return <CrudPage title="التصنيفات" description="نظم المنتجات حسب نشاطك." endpoint="/categories" search={false} fields={[{name:'name',label:'الاسم',required:true},{name:'color',label:'اللون'},{name:'icon',label:'الأيقونة'},{name:'description',label:'الوصف',type:'textarea'}]} columns={[{key:'name',label:'الاسم'},{key:'products',label:'عدد المنتجات',render:r=>r._count?.products||0},{key:'color',label:'اللون',render:r=><span style={{background:r.color}} className="inline-block h-5 w-10 rounded-full"/>}]}/>}

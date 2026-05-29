@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: raqaba-api
+    runtime: node
+    rootDir: apps/api
+    buildCommand: npm install --include=dev && npm run prisma:generate && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      - key: APPWRITE_ENDPOINT
+        sync: false
+      - key: APPWRITE_PROJECT_ID
+        sync: false
+      - key: APPWRITE_API_KEY
+        sync: false
+      - key: APPWRITE_DATABASE_ID
+        value: raqaba
+      - key: APPWRITE_BUCKET_ID
+        value: product_images
