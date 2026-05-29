@@ -1,30 +1,54 @@
 'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { authApi, clearToken, getToken } from '@/lib/api';
 
-const AuthContext = createContext<any>(null);
+type AuthState = { user:any; business:any; loading:boolean; refresh:()=>Promise<void>; logout:()=>void };
+const AuthContext = createContext<AuthState | null>(null);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState({ user: null, business: null, loading: true });
-  const router = useRouter();
+export function AuthProvider({children}:{children:React.ReactNode}){
+  const [state,setState]=useState<any>({user:null,business:null,loading:true}); 
+  const router=useRouter(); 
+  const pathname=usePathname(); 
 
-  useEffect(() => {
-    // Fake loading for now to avoid loops
-    const timer = setTimeout(() => {
-      setState(s => ({ ...s, loading: false }));
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
+  async function refresh(){
+    try{
+      const res=await authApi.me(); 
+      setState({user:res.user,business:res.business,loading:false})
+    }catch{
+      clearToken(); 
+      setState({user:null,business:null,loading:false}); 
+      if (!pathname.startsWith('/login') && !pathname.startsWith('/register') && pathname !== '/') {
+        router.push('/login');
+      }
+    }
+  } 
 
-  if (state.loading) {
-    return <div className="p-10 text-center">Loading...</div>;
-  }
+  useEffect(()=>{
+    if(!getToken()){
+      setState((s:any)=>({...s,loading:false})); 
+      if (!['/', '/login', '/register'].includes(pathname)) {
+        router.push('/login');
+      }
+    } else {
+      refresh();
+    }
+  }, [pathname]); 
+
+  function logout(){
+    clearToken(); 
+    router.push('/login');
+  } 
 
   return (
-    <AuthContext.Provider value={{ ...state, logout: () => {} }}>
-      {children}
+    <AuthContext.Provider value={{...state,refresh,logout}}>
+      {state.loading ? (
+        <div className="grid min-h-screen place-items-center bg-slate-50">
+          <div className="rounded-3xl bg-white p-8 font-black shadow-card">جاري تحميل رقابة...</div>
+        </div>
+      ) : children}
     </AuthContext.Provider>
   );
 }
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth=()=>useContext(AuthContext)!;
